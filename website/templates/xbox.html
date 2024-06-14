@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}K_W Xbox{% endblock %}
+{% block header %}id="header-Xbox"{% endblock %}
+{% block background %}id="Xbox-games"{% endblock %}
+{% block nav %}id="nav-Xbox"{% endblock %}
+{% block active_Xbox %}id="active-Xbox"{% endblock %}
+{% block content %}
+
+    {% if items[1] %}
+        <div id="scroll-to-top">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})">˄</button>
+        </div>
+    {% endif %}
+
+    <form method="post" class="search-bar">
+        <input type="text" name="search" placeholder="Keresés" value="{{ recent_search }}"
+               style="font-family: Trirong, sans-serif;">
+        <input type="submit" name="filter" style="visibility: hidden">
+    </form>
+
+    {% if not items[0] %}
+        <h1 style="color: white">Nincs a keresésnek megfelelő találat</h1>
+    {% else %}
+        <table>
+        <tr>
+            <th>Kép</th>
+            <th>Játék neve</th>
+            <th>Platform</th>
+            {% if user.is_authenticated %}
+                <th>Mennyiség</th>
+            {% endif %}
+            <th>Ár</th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <form id="add_to_cart" method="post" action="" name="addtocart">
+                    <input type="hidden" name="item_id" value="{{ item.id }}"/>
+                    <td><img class="box" src="../static/img/xbox_games/{{ item.img_name }}.jpg"></td>
+                    <input type="hidden" name="item_img" value="../static/img/ps_games/{{ item.img_name }}.jpg"/>
+                    <td>{{ item.name }}</td>
+                    <input type="hidden" name="item_name" value="{{ item.name }}"/>
+                    <td>{{ item.platform.title() }}</td>
+                    <input type="hidden" name="item_platform" value="{{ item.platform }}"/>
+                    {% if user.is_authenticated %}
+                        <td>
+                            <input type="number" class="" name="item_quantity" value="1" min="1" max="5"
+                                   style="font-family: Trirong, sans-serif; color: black"/>
+                        </td>
+                    {% endif %}
+                    <td>{{ item.price }} Ft</td>
+                    <input type="hidden" name="item_price" value="{{ item.price }}"/>
+                    {% if user.is_authenticated %}
+                        <td>
+                            <input type="submit" name="to_cart" id="to_cart" class="rounded" value="Kosárba">
+                        </td>
+                    {% endif %}
+                    {% if user.id == 1 %}
+                        <td>
+                            <input type="submit" name="game_edit" id="game_edit" class="rounded" value="Módosítás"
+                                   style="background-color: white">
+                        </td>
+                    {% endif %}
+                </form>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+{% endblock %}

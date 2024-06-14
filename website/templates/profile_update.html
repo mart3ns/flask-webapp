@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}K_W Profil módosítás{% endblock %}
+{% block active_profile %}class="active"{% endblock %}
+{% block content %}
+    <h2>Adatok módosítása</h2>
+
+    <section id="update_profile">
+        <div class="form-container rounded">
+            <form method="post" id="cancel_form"></form>
+            <form method="post" autocomplete="off">
+                <label for="last_name" class="required-class">Vezetéknév:</label>
+                <input type="text" name="last_name" id="last_name" maxlength="50" value="{{ user.last_name }}"
+                       required>
+
+                <label for="first_name" class="required-class">Keresztnév:</label>
+                <input type="text" name="first_name" id="first_name" maxlength="50" value="{{ user.first_name }}"
+                       required>
+
+                <label for="new_password">Új jelszó (legalább 8 karakter):</label>
+                <input type="password" name="new_password" id="new_password" maxlength="50">
+
+                <label for="new_password_check">Új jelszó újra:</label>
+                <input type="password" name="new_password_check" id="new_password_check" maxlength="50">
+
+                <label for="address" class="required-class">Számlázási/szállítási cím:</label>
+                <input type="text" name="address" id="address" maxlength="100"
+                       placeholder="5900 Orosháza, Táncsics Mihály utca 2." value="{{ user.address }}" required>
+
+                <label for="password" class="required-class">Jelenlegi jelszó:</label>
+                <input type="password" name="password" id="password" maxlength="50" required>
+
+                <input type="submit" name="save" value="Mentés">
+                <input type="submit" name="cancel" value="Mégsem" form="cancel_form" style="background-color: crimson">
+            </form>
+            <h6 class="required-class">A csillaggal jelölt mezők kitöltése kötelező!</h6>
+        </div>
+    </section>
+{% endblock %}

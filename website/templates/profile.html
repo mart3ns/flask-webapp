@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}K_W Profil{% endblock %}
+{% block active_profile %}class="active"{% endblock %}
+{% block content %}
+    <h1>Adataim</h1>
+    <table style="color: black">
+        <tr>
+            <th>Vezetéknév</th>
+            <th>Keresztnév</th>
+            <th>E-mail</th>
+            <th>Szállítási cím</th>
+        </tr>
+        <tr>
+            <th>{{ user.last_name }}</th>
+            <th>{{ user.first_name }}</th>
+            <th>{{ user.email }}</th>
+            <th>{{ user.address }}</th>
+            <th class="GTC"><a href="/profile/update">Módosítás</a></th>
+        </tr>
+    </table>
+    <h1>Rendeléseim</h1>
+    {% if not orders %}
+        <h2>Nem található korábbi rendelés</h2>
+    {% else %}
+        <table style="color: black">
+            <tr>
+                <th>Rendelés azonosító</th>
+                <th>Tételek</th>
+                <th>Ár</th>
+                <th>Rendelés időpontja</th>
+                <th>Státusz</th>
+            </tr>
+            {% for id, value in orders.items() %}
+                <tr>
+                    <form method="post">
+                        <td>{{ id }}</td>
+                        <input type="hidden" name="order_id" value="{{ id }}"/>
+                        <td>{{ ', '.join(value) }}</td>
+                        <td>{{ prices[id] }} Ft</td>
+                        <td>{{ date[id] }}</td>
+                        <td {% if completed[id] == 'Teljesített' %}
+                            style="color: darkgreen" {% elif completed[id] == 'Függőben' %}
+                            style="color: #FFC72C" {% else %}
+                            style="color: red" {% endif %} >
+                            {{ completed[id] }}</td>
+                        {% if cancelable[id] == True and completed[id] != 'Törölt' %}
+                            <td>
+                                <button type="submit" class="rounded remove" name="cancel_order">Lemondás</button>
+                            </td>
+                        {% endif %}
+                    </form>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

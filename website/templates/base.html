@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="../static/img/ICON.png">
+
+    <title>{% block title %}Konzol_World{% endblock %}</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+</head>
+<body>
+<header {% block header %}id="header-main"{% endblock %}></header>
+<main {% block background %}{% endblock %}>
+    <nav {% block nav %}id="nav-main" {% endblock %}>
+        <ul>
+            <li {% block active_home %}{% endblock %}>
+                <a id="home" href="/">Kezdőlap</a>
+            </li>
+            <li {% block active_PlayStation %}{% endblock %}>
+                <a href="/playstation">PlayStation</a>
+            </li>
+            <li {% block active_Xbox %}{% endblock %}>
+                <a href="/xbox">Xbox</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li {% block active_profile %}{% endblock %}>
+                    <a href="/profile">Profil</a>
+                </li>
+                <li>
+                    <a href="/logout">Kijelentkezés</a>
+                </li>
+                <li {% block active_cart %}{% endblock %}>
+                    <a href="/cart">Kosár</a>
+                </li>
+
+            {% else %}
+                <li {% block active_login %}{% endblock %}>
+                    <a href="/login">Bejelentkezés</a>
+                </li>
+                <li {% block active_signup %}{% endblock %}>
+                    <a href="/sign_up">Regisztráció</a>
+                </li>
+            {% endif %}
+
+            {% if user.is_authenticated and user.id == 1 %}
+                <li {% block active_orders %}{% endblock %}>
+                    <a href="/orders">Rendeléskezelés</a>
+                </li>
+                <li {% block active_game_add %}{% endblock %}>
+                    <a href="/game_add">Játék hozzáadás</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+<footer>
+    <p>&copy; Konzol_World</p>
+</footer>
+</body>
+</html>

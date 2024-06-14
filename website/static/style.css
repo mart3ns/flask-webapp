@@ -1,0 +1,566 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: Trirong, sans-serif;
+}
+
+.highlighted {
+    color: magenta;
+    font-size: 110%;
+}
+
+header {
+    height: 250px;
+    background-position: center;
+}
+
+#header-main {
+    background-image: url('img/LOGO.png');
+}
+
+#header-PlayStation {
+    background-image: url('img/PlayStation.png');
+    background-size: 35%;
+    background-repeat: no-repeat;
+}
+
+#header-Xbox {
+    background-image: url('img/Xbox.png');
+    background-size: 25%;
+    background-repeat: no-repeat;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-main {
+    background-color: #638ab3;
+}
+
+#nav-PlayStation {
+    background-color: dodgerblue;
+}
+
+#nav-Xbox {
+    background-color: darkgreen;
+}
+
+.active {
+    border-bottom: 3px solid black;
+}
+
+#active-PlayStation {
+    border-bottom: 3px solid black;
+}
+
+#active-Xbox {
+    border-bottom: 3px solid black;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+}
+
+nav li:hover:not(.active) {
+    border-bottom: 3px solid white;
+}
+
+nav a {
+    color: black;
+    text-transform: uppercase;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.message {
+    text-align: center;
+    color: black;
+    background: yellow;
+}
+
+.success {
+    text-align: center;
+    background: green;
+    color: white;
+}
+
+.error {
+    text-align: center;
+    background: red;
+    color: white;
+}
+
+#link {
+    color: magenta;
+    text-align: center;
+}
+
+main {
+    min-height: 62.5vh;
+    position: relative;
+    background: linear-gradient(180deg, white, #638ab3);
+    padding: 0 0 10px;
+}
+
+#introduction p::first-letter {
+    font-size: 150%;
+    color: magenta;
+}
+
+#introduction h4 {
+    text-transform: uppercase;
+    margin: 20px;
+    color: magenta;
+}
+
+main p {
+    text-align: justify;
+    width: 90%;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+section {
+    padding: 25px;
+}
+
+@keyframes slideshow {
+    0% {
+        background-image: url('img/slideshow/AC_IV.jpg');
+    }
+    2.5% {
+        background-image: url('img/slideshow/AC_Unity.jpg');
+    }
+    5% {
+        background-image: url('img/slideshow/AC_Unity_2.jpg');
+    }
+    7.5% {
+        background-image: url('img/slideshow/AC_Valhalla.jpg');
+    }
+    10% {
+        background-image: url('img/slideshow/AC_Valhalla_2.jpg');
+    }
+    12.5% {
+        background-image: url('img/slideshow/Batman.jpg');
+    }
+    15% {
+        background-image: url('img/slideshow/Batman_2.jpg');
+    }
+    17.5% {
+        background-image: url('img/slideshow/BioShock.jpg');
+    }
+    20% {
+        background-image: url('img/slideshow/Cyberpunk.jpg');
+    }
+    22.5% {
+        background-image: url('img/slideshow/Cyberpunk_2.jpg');
+    }
+    25% {
+        background-image: url('img/slideshow/Cyberpunk_3.jpg');
+    }
+    27.5% {
+        background-image: url('img/slideshow/Cyberpunk_4.jpg');
+    }
+    30% {
+        background-image: url('img/slideshow/Fallout_4.jpg');
+    }
+    32.5% {
+        background-image: url('img/slideshow/Far_Cry_4.jpg');
+    }
+    35% {
+        background-image: url('img/slideshow/Far_Cry_Primal.jpg');
+    }
+    37.5% {
+        background-image: url('img/slideshow/Far_Cry_5.jpg');
+    }
+    40% {
+        background-image: url('img/slideshow/Far_Cry_6.jpg');
+    }
+    42.5% {
+        background-image: url('img/slideshow/Forza_5.jpg');
+    }
+    45% {
+        background-image: url('img/slideshow/Ghost_of_Tsushima.jpg');
+    }
+    47.5% {
+        background-image: url('img/slideshow/God_of_War.jpg');
+    }
+    50% {
+        background-image: url('img/slideshow/GTA_V.jpg');
+    }
+    52.5% {
+        background-image: url('img/slideshow/Horizon.jpg');
+    }
+    55% {
+        background-image: url('img/slideshow/inFamous.jpg');
+    }
+    57.5% {
+        background-image: url('img/slideshow/Just_Cause_3.jpg');
+    }
+    60% {
+        background-image: url('img/slideshow/Just_Cause_3_2.jpg');
+    }
+    62.5% {
+        background-image: url('img/slideshow/Just_Cause_3_3.jpg');
+    }
+    65% {
+        background-image: url('img/slideshow/NFS_Rivals.jpg');
+    }
+    67.5% {
+        background-image: url('img/slideshow/Skyrim.jpg');
+    }
+    70% {
+        background-image: url('img/slideshow/Sleeping_Dogs.jpg');
+    }
+    72.5% {
+        background-image: url('img/slideshow/Spider_Man.jpg');
+    }
+    75% {
+        background-image: url('img/slideshow/Spider_Man_MM.jpg');
+    }
+    77.5% {
+        background-image: url('img/slideshow/The_Last_of_Us.jpg');
+    }
+    80% {
+        background-image: url('img/slideshow/The_Witcher_3.jpg');
+    }
+    82.5% {
+        background-image: url('img/slideshow/The_Witcher_3_2.jpg');
+    }
+    85% {
+        background-image: url('img/slideshow/The_Witcher_3_3.jpg');
+    }
+    87.5% {
+        background-image: url('img/slideshow/Thief.jpg');
+    }
+    90% {
+        background-image: url('img/slideshow/Uncharted_4.jpg');
+    }
+    92.5% {
+        background-image: url('img/slideshow/Uncharted_The_Lost_Legacy.jpg');
+    }
+    95% {
+        background-image: url('img/slideshow/Watch_Dogs.jpg');
+    }
+    97.5% {
+        background-image: url('img/slideshow/Watch_Dogs_2.jpg');
+    }
+    100% {
+        background-image: url('img/slideshow/Watch_Dogs_3.jpg');
+    }
+}
+
+.game-slideshow {
+    position: center;
+    margin: 50px auto;
+    width: 854px;
+    height: 480px;
+    box-shadow: 0 0 50px 5px black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation-name: slideshow;
+    animation-duration: 180s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+#PS-games {
+    background-image: url("img/PS_background.jpg");
+    background-position: center;
+    background-repeat: repeat;
+}
+
+#PS-games h2 {
+    color: white;
+    margin: 50px;
+}
+
+#PS-games h3 {
+    text-transform: uppercase;
+    margin: 20px;
+    color: white;
+}
+
+#Xbox-games {
+    background-image: url("img/Xbox_background.png");
+    background-position: center;
+    background-repeat: repeat;
+}
+
+#Xbox-games h2 {
+    color: white;
+    margin: 50px;
+}
+
+#Xbox-games h3 {
+    text-transform: uppercase;
+    margin: 20px;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    position: center;
+    margin: 0 auto;
+    color: white;
+}
+
+th, td {
+    padding: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box {
+    padding: 10px;
+    margin: 15px;
+    width: 200px;
+    height: 250px;
+}
+
+hr {
+    margin: auto 25px;
+}
+
+#scroll-to-top {
+    position: absolute;
+    top: 90vh;
+    bottom: 20px;
+    right: 20px;
+}
+
+#scroll-to-top button {
+    width: 65px;
+    height: 65px;
+    position: sticky;
+    top: 90vh;
+    border-radius: 50%;
+    border: none;
+    color: black;
+    background-color: white;
+    font-size: 150%;
+    cursor: pointer;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 30px;
+    color: magenta;
+}
+
+.rounded {
+    border-radius: 25px;
+}
+
+.remove {
+    background-color: crimson;
+    border: none;
+    color: black;
+    font-size: 110%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.add {
+    background-color: dodgerblue;
+    border: none;
+    color: black;
+    font-size: 110%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.form-container {
+    padding: 40px;
+    border: 3px solid royalblue;
+    margin: 25px auto;
+    box-sizing: border-box;
+    width: 600px;
+}
+
+.avatar-icon {
+    width: 40%;
+    display: block;
+    margin: 0 auto 40px;
+}
+
+form > input:not([type="file"]) {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.required-class::before {
+    content: "*";
+    color: magenta;
+}
+
+input[type="submit"], input[type="reset"] {
+    border: none;
+    color: black;
+    font-size: 110%;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    background-color: dodgerblue;
+}
+
+input[type="reset"] {
+    background-color: crimson;
+}
+
+.search-bar {
+    margin: 0 auto;
+    width: 600px;
+}
+
+#to_cart {
+    background-color: white;
+}
+
+.GTC a:link {
+    color: magenta
+}
+
+.GTC a:active {
+    color: red
+}
+
+footer {
+    margin-top: auto;
+    background-color: #171326;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        background-size: 40%;
+        height: 100px;
+    }
+
+    nav {
+        font-size: 6px;
+    }
+
+    .game-slideshow {
+        width: 342px;
+        height: 192px;
+    }
+
+    .search-bar {
+        width: 350px;
+    }
+
+    .form-container {
+        width: 350px;
+    }
+
+    table {
+        max-width: 400px;
+    }
+
+    th, td {
+        padding: 1px;
+        font-size: 10px;
+    }
+
+    .box {
+        width: 75px;
+        height: 94px;
+    }
+
+    #PS-games, #Xbox-games {
+        background-size: 100%;
+    }
+
+    #scroll-to-top button {
+        visibility: hidden;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+
+    header {
+        background-size: 50%;
+        height: 120px;
+    }
+
+    nav {
+        font-size: 10px;
+    }
+
+    main {
+        min-height: 75vh;
+    }
+
+    .game-slideshow {
+        width: 427px;
+        height: 240px;
+    }
+
+    .search-bar {
+        width: 400px;
+    }
+
+    .form-container {
+        width: 550px;
+    }
+
+    table {
+        max-width: 550px;
+    }
+
+    th, td {
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    .box {
+        width: 100px;
+        height: 125px;
+    }
+
+    #PS-games, #Xbox-games {
+        background-size: 100%;
+    }
+
+    #scroll-to-top button {
+        visibility: hidden;
+    }
+}

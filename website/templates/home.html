@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block active_home %}class="active"{% endblock %}
+{% block content %}
+    <section id="introduction">
+        {% if not user.email %}
+            <h1>Üdv, vendég!</h1>
+            <h2>Rólunk</h2>
+        {% else %}
+            <h1>Üdv, {{ user.first_name }}!</h1>
+            <h2>Rólunk</h2>
+        {% endif %}
+
+        <p>
+            Üdv a <span class="highlighted">Konzol_World!</span> honlapján! Ha kontroller volt a jeled már az óvodában
+            is és ne telne el nap egy kis videójáték nélkül, a lehető legjobb helyen jársz! Folyamatosan bővülő
+            termékkínálatunkban PlayStation és Xbox játékokat találhatsz. A vásárláshoz csak egy regisztráció szükséges,
+            és már adhatod is le a rendeléseket.
+        </p>
+
+        <h4>Termékeink:</h4>
+
+        <p>
+            Széleskörű és folyamatosan bővülő termékkínálatunkból biztosan találni fogsz számodra megfelelőt,
+            legyen szó akár PlayStation, akár Xbox játékról. Alapvető célunk, hogy az ügyintézés,
+            az ügyfelek kiszolgálása a lehető legteljesebb körű, gördülékeny és rugalmas legyen.
+            <br/><br/><br/>
+            Webáruházunkat azzal a céllal alapítottuk, hogy forgalmazott termékeinket még szélesebb körben ismertessük
+            meg a már meglévő és új ügyfeleinkkel egyaránt, illetve hogy kényelmesen, "a mai rohanó világban"
+            akár otthonról is megvásárolható legyen a kiválasztott termék.
+        </p>
+
+        <h4>Elérhetőség:</h4>
+
+        <p>
+            Bármi kérdésed lenne felénk? Írj nekünk bátran!
+            <br/><br/>
+            E-mail címünk:
+            <br/>
+            <a class="highlighted" href="mailto:konzol.world.2023@gmail.com">konzol.world.2023@gmail.com</a>
+            <br/><br/>
+        </p>
+
+        <hr/>
+
+        <div class="game-slideshow"></div>
+    </section>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}K_W Kosár{% endblock %}
+{% block active_cart %}class="active"{% endblock %}
+{% block content %}
+    <br/>
+    <table style="color: black">
+        {% if user.added_to_cart %}
+            <tr>
+                <th>Kép</th>
+                <th>Játék neve</th>
+                <th>Platform</th>
+                <th>Mennyiség</th>
+                <th>Ár</th>
+            </tr>
+        {% endif %}
+        {% set ns = namespace(price = 0) %}
+        {% for game in user.added_to_cart %}
+            <tr>
+                <form id="cart" method="post" action="">
+                    {% if game.platform == 'PS4' or game.platform == 'PS5' %}
+                        <td><img class="box" src="../static/img/ps_games/{{ game.img_name }}.jpg"></td>
+                        <input type="hidden" name="item_img" value="../static/img/ps_games/{{ game.img_name }}.jpg"/>
+                    {% else %}
+                        <td><img class="box" src="../static/img/xbox_games/{{ game.img_name }}.jpg"></td>
+                        <input type="hidden" name="item_img" value="../static/img/xbox_games/{{ game.img_name }}.jpg"/>
+                    {% endif %}
+                    <td>{{ game.name }}</td>
+                    <input type="hidden" name="item_name" value="{{ game.name }}"/>
+                    <td>{{ game.platform }}</td>
+                    <input type="hidden" name="item_platform" value="{{ game.platform }}"/>
+
+                    <td>
+                        {% if quantity[game.id] < 5 %}
+                            <button type="submit" class="rounded add" name="add_one_to_cart">+</button>
+                        {% endif %}
+                        <br>
+                        {{ quantity[game.id] }} db
+                        <br>
+                        <input type="hidden" name="item_quantity" value="{{ quantity[game.id] }}"/>
+                        {% if quantity[game.id] > 1 %}
+                            <button type="submit" class="rounded remove" name="remove_one_from_cart">–</button>
+                        {% endif %}
+                    </td>
+                    <td>{{ game.price * quantity[game.id] }} Ft</td>
+                    <input type="hidden" name="item_price" value="{{ game.price }}"/>
+                    <td>
+                        <input type="hidden" name="item_id" value="{{ game.id }}"/>
+                        <button type="submit" class="rounded remove" name="remove">Törlés</button>
+                    </td>
+                </form>
+            </tr>
+            {% set ns.price = ns.price + game.price * quantity[game.id] %}
+        {% endfor %}
+        {% if user.added_to_cart %}
+            <form id="order" method="post">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Összeg: {{ ns.price }} Ft</td>
+                    <td><input type="submit" class="rounded" value="Rendel" name="order"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" class="rounded remove" name="remove_all">Kosár ürítése</button>
+                    </td>
+                </tr>
+            </form>
+        {% else %}
+            <br/><br/><br/><br/><br/>
+            <h1>A kosár üres!</h1>
+        {% endif %}
+    </table>
+{% endblock %}

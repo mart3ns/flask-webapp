@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}K_W Bejelentkezés{% endblock %}
+{% block active_login %}class="active"{% endblock %}
+{% block content %}
+    <section id="login">
+
+        <h2>Felhasználói profil</h2>
+
+        <div class="form-container rounded">
+            <img src="../static/img/VAULT_BOY.png" alt="Avatar" class="avatar-icon">
+            <form method="post" autocomplete="on">
+                <label for="email">E-mail cím:</label>
+                <input type="email" name="email" id="email" placeholder="valaki@pelda.com" required>
+
+                <label for="password">Jelszó:</label>
+                <input type="password" name="password" id="password" required>
+
+                <input type="submit" name="login" value="Bejelentkezés">
+            </form>
+        </div>
+    </section>
+
+    <h4 id="link">Nincs még fiókod?<br/>Kattints <a href="/sign_up">ide</a>, hogy regisztrálj!</h4>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}K_W Játék módosítás{% endblock %}
+{% block content %}
+    <div class="form-container rounded">
+        <h2>Játék módosítása</h2>
+        <form method="POST" autocomplete="off">
+            <label for="name" class="required-class">Játék neve:</label>
+            <input type="text" name="name" id="name" value="{{ request.args.get('name') }}" required>
+
+            <label for="platform" class="required-class">Platform:</label>
+            <input type="text" placeholder="PS4 / PS5 / Xbox One / Xbox Series X" name="platform" id="platform"
+                   value="{{ request.args.get('platform') }}" required>
+
+            <label for="price" class="required-class">Ár:</label>
+            <input type="number" name="price" id="price" value="{{ request.args.get('price') }}" required>
+
+            <label for="img_name" class="required-class">Képfájl neve:</label>
+            <input type="text" name="img_name" id="img_name" value="{{ request.args.get('img') }}" required>
+
+            <input type="submit" name="game_add" value="Módosítás">
+            <input type="submit" name="game_delete" value="Játék törlése" style="background-color: red">
+            <input type="submit" name="cancel" value="Mégsem" style="background-color: crimson">
+        </form>
+    </div>
+{% endblock %}

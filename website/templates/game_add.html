@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}K_W Játék hozzáadás{% endblock %}
+{% block active_game_add %}class="active"{% endblock %}
+{% block content %}
+    <div class="form-container rounded">
+        <h2>Játék hozzáadás</h2>
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            <label for="name" class="required-class">Játék neve:</label>
+            <input type="text" name="name" id="name" {% if save[0] %} value="{{ save[0] }}" {% endif %} required>
+
+            <label for="platform" class="required-class">Platform:</label>
+            <input type="text" placeholder="PS4 / PS5 / Xbox One / Xbox Series X" name="platform" id="platform"
+                    {% if save[1] %} value="{{ save[1] }}" {% endif %} required>
+
+            <label for="price" class="required-class">Ár:</label>
+            <input type="number" name="price" id="price" {% if save[2] %} value="{{ save[2] }}" {% endif %} required>
+
+            <label for="img_name" class="required-class">Képfájl neve:</label>
+            <input type="text" name="img_name" id="img_name" {% if save[3] %} value="{{ save[3] }}" {% endif %}
+                   required>
+
+            <input type="submit" name="game_add" value="Játék hozzáadása">
+        </form>
+
+        <h2>Új borítókép feltöltése</h2>
+        <form method="POST" enctype=multipart/form-data>
+            <input type="file" name="file">
+            <input type="submit" name="playstation_img_upload" value="Feltöltés (PlayStation)"
+                   style="background-color: dodgerblue">
+            <input type="submit" name="xbox_img_upload" value="Feltöltés (Xbox)" style="background-color: green">
+        </form>
+    </div>
+{% endblock %}

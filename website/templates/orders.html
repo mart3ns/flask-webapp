@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}K_W Rendelések{% endblock %}
+{% block active_orders %}class="active"{% endblock %}
+{% block content %}
+    <h1>Rendelések</h1>
+    <h2>Függőben lévő</h2>
+    {% if not pending %}
+        <h3>Nincs függőben lévő rendelés</h3>
+    {% else %}
+        <table style="color: black">
+            <tr>
+                <th>Rendelés azonosító</th>
+                <th>Tételek</th>
+                <th>Ár</th>
+                <th>Rendelés időpontja</th>
+                <th>Megrendelő neve (id)</th>
+                <th>Szállítási cím</th>
+            </tr>
+            {% for order in pending %}
+                <tr>
+                    <form method="post">
+                        <td>{{ order.id }}</td>
+                        <input type="hidden" name="order_id" value="{{ order.id }}"/>
+                        {% if order.id in orders %}
+                            <td>{{ ', '.join(orders[order.id]) }}</td>
+                        {% endif %}
+                        <td>{{ order.order_amount }} Ft</td>
+                        <td>{{ order.date }}</td>
+                        <td>{{ users[order.user_id].last_name }} {{ users[order.user_id].first_name }}
+                            ({{ users[order.user_id].id }})
+                        </td>
+                        <input type="hidden" name="user_name"
+                               value="{{ users[order.user_id].last_name }} {{ users[order.user_id].first_name }}"/>
+                        <td>{{ users[order.user_id].address }}</td>
+                        {% if fulfill[order.id] %}
+                            <td>
+                                <button type="submit" class="rounded add" name="fulfill_order">Teljesít</button>
+                            </td>
+                            <td>
+                                <button type="submit" class="rounded remove" name="delete_order">Töröl</button>
+                            </td>
+                        {% endif %}
+                        <input type="hidden" name="user_email" value="{{ users[order.user_id].email }}"/>
+                    </form>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <h2>Teljesített</h2>
+    {% if not completed %}
+        <h3 style="color: black">Nincs teljesített rendelés</h3>
+    {% else %}
+        <table style="color: black">
+            <tr>
+                <th>Rendelés azonosító</th>
+                <th>Tételek</th>
+                <th>Ár</th>
+                <th>Rendelés időpontja</th>
+                <th>Megrendelő neve (id)</th>
+                <th>Szállítási cím</th>
+            </tr>
+            {% for order in completed %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <input type="hidden" name="order_id" value="{{ id }}"/>
+                    {% if order.id in orders %}
+                        <td>{{ ', '.join(orders[order.id]) }}</td>
+                    {% endif %}
+                    <td>{{ order.order_amount }} Ft</td>
+                    <td>{{ order.date }}</td>
+                    <td>{{ users[order.user_id].last_name }} {{ users[order.user_id].first_name }}
+                        ({{ users[order.user_id].id }})
+                    </td>
+                    <td>{{ users[order.user_id].address }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <h2>Törölt</h2>
+    {% if not deleted %}
+        <h3 style="color: black">Nincs törölt rendelés</h3>
+    {% else %}
+        <table style="color: black">
+            <tr>
+                <th>Rendelés azonosító</th>
+                <th>Tételek</th>
+                <th>Ár</th>
+                <th>Rendelés időpontja</th>
+                <th>Megrendelő neve (id)</th>
+                <th>Szállítási cím</th>
+            </tr>
+            {% for order in deleted %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <input type="hidden" name="order_id" value="{{ id }}"/>
+                    {% if order.id in orders %}
+                        <td>{{ ', '.join(orders[order.id]) }}</td>
+                    {% endif %}
+                    <td>{{ order.order_amount }} Ft</td>
+                    <td>{{ order.date }}</td>
+                    <td>{{ users[order.user_id].last_name }} {{ users[order.user_id].first_name }}
+                        ({{ users[order.user_id].id }})
+                    </td>
+                    <td>{{ users[order.user_id].address }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}
